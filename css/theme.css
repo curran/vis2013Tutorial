@@ -7,11 +7,11 @@
 body {
   
   /**
-   * Use a repeating background image from the IEEE Vis 2013 PowerPoint template.
+   * Use a background image from the IEEE Vis 2013 PowerPoint template.
    * from http://www.ieeevis.org/year/2013/info/presenter-information/authors
    */
-  background-image:url('vis2013repeat.png');
-  background-repeat:repeat-y;
+  background-image:url('vis2013slide.png');
+  background-attachment:fixed;
 
   font-family: 'OpenSans', serif;
 }
@@ -34,8 +34,8 @@ body {
 /* Position the small logo image at a fixed location. */
 #visLogo {
   position:fixed;
-  right: 0px;
-  bottom: 0px;
+  right: 5px;
+  bottom: 10px;
 }
 
 @font-face {
@@ -66,7 +66,8 @@ body {
 }
 
 .spacer {
-  padding-top: 300px;
+  padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 h1 {
@@ -79,8 +80,8 @@ li {
   font-size: 2em;
   color: #254b51;
   list-style:none; /* Get rid of normal bullet */
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top:5px;
+  padding-bottom:5px;
 }
 
 /* This styled bullet replaces the normal one */
