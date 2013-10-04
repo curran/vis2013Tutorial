@@ -10,14 +10,14 @@ body {
    * Use a background image from the IEEE Vis 2013 PowerPoint template.
    * from http://www.ieeevis.org/year/2013/info/presenter-information/authors
    */
-  background-image:url('vis2013slide.png');
+  background-image:url('slideBackground.png');
   background-attachment:fixed;
 
   font-family: 'OpenSans', serif;
 }
 
 /* Position the vis header image at the top. */
-#vis2013top {
+#firstSlideBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -32,9 +32,9 @@ body {
 }
 
 /* Position the small logo image at a fixed location. */
-#visLogo {
+#logo {
   position:fixed;
-  right: 5px;
+  left: 80px;
   bottom: 10px;
 }
 
