@@ -59,7 +59,7 @@ body {
 }
 
 #content {
-  margin-top: 500px;
+  margin-top: 300px;
   margin-bottom: 50px;
   margin-right: 100px;
   margin-left: 100px;
@@ -78,6 +78,17 @@ h1 {
 li {
   font-size: 2em;
   color: #254b51;
+  list-style:none; /* Get rid of normal bullet */
   padding-top:10px;
   padding-bottom:10px;
+}
+
+/* This styled bullet replaces the normal one */
+li:before {
+  content: "\2022";
+  font-size:1.5em;
+  color: #e73e27;
+  position: relative;
+  top:0.13em;
+  padding-right:.25em;
 }
