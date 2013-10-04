@@ -2,22 +2,16 @@
  * IEEE Vis 2013 presentation document theme.
  * Feel free to use / repurpose.
  * Curran Kelleher 10/3/2013
+ * curran.kelleher@gmail.com
  */
 
+/* Use the OpenSans font for everything. */
 body {
-  
-  /**
-   * Use a background image from the IEEE Vis 2013 PowerPoint template.
-   * from http://www.ieeevis.org/year/2013/info/presenter-information/authors
-   */
-  background-image:url('slideBackground.png');
-  background-attachment:fixed;
-
   font-family: 'OpenSans', serif;
 }
 
-/* Position the vis header image at the top. */
-#firstSlideBackground {
+/* Position the image behind the title section. */
+#firstSlideBackground, #slideBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -28,7 +22,12 @@ body {
   /* The following cause left-right scroll bars to not appear. */
   overflow: hidden;
   width: 100%;
-  height: 100%;
+}
+
+/* Position the fixed position image behind the other sections. */
+#slideBackground {
+  z-index:-2; 
+  position: fixed;
 }
 
 /* Position the small logo image at a fixed location. */
@@ -38,11 +37,13 @@ body {
   bottom: 10px;
 }
 
+/* Use the OpenSans font from the Google Font API. */
 @font-face {
   font-family: 'OpenSans';
   src: url('openSans.woff');
 }
 
+/* Style the title in the title section. */
 #title {
   text-align:right;
   font-family: 'OpenSans', serif;
@@ -50,6 +51,7 @@ body {
   color: #e73e27;
 }
 
+/* Style the subtitle in the title section. */
 #subtitle {
   text-align:right;
   font-size: 3em;

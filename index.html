@@ -16,16 +16,40 @@ Curran Kelleher 10/3/2013
     <title>Visualization + Cloud + Mobile</title>
   </head>
   <body>
+
+    <!-- Background images extracted from the IEEE Vis 2013 PowerPoint template.
+         http://www.ieeevis.org/year/2013/info/presenter-information/authors -->
+
+    <!-- The image behind the title section -->
     <div id="firstSlideBackground">
       <img src="css/firstSlideBackground.png">
     </div>
-    <img id="logo" src="css/logo.png">
-    <div id="content">
-      <p id="title">Mobile &amp; Cloud Web-based<br>Visualization Technologies</p>
-      <p id="subtitle">By Curran Kelleher</p>
-      <div id="sections"/>
+
+    <!-- The fixed position image behind the other sections -->
+    <div id="slideBackground">
+      <img src="css/slideBackground.png">
     </div>
+
+    <!-- "logo" is the small image fixed at the bottom -->
+    <img id="logo" src="css/logo.png">
+
+    <div id="content">
+
+      <!-- Title and subtitle for the first "slide" -->
+      <p id="title">Mobile &amp; Cloud Web-based Visualization Technologies</p>
+      <p id="subtitle">By Curran Kelleher</p>
+
+      <!-- The other sections are injected into this div by loadSections.js -->
+      <div id="sections"/>
+
+    </div>
+
+    <!-- Add a spacer at the end so you can scroll the content of the last
+         section into the vertical center of the page -->
     <div class="spacer"/>
+
+    <!-- Load the sections into the "sections" div. Placed at the end of body
+         so no need to use document.ready -->
     <script src="loadSections.js"></script>
   </body>
 </html>
