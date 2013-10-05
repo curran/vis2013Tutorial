@@ -1,7 +1,20 @@
 [
-  "html5APIs",
-  "topLibs",
-  "plumbing",
-  "webDevEnvs",
-  "challenges"
+  {
+    "name": "html5APIs",
+    "examples": [
+      "canvas_smiley"
+    ]
+  },
+  {
+    "name": "topLibs"
+  },
+  {
+    "name": "plumbing"
+  },
+  {
+    "name": "webDevEnvs"
+  },
+  {
+    "name": "challenges"
+  }
 ]

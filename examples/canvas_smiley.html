@@ -1,0 +1,39 @@
+<html>
+<body>
+<canvas id="canvas" width="150" height="150"></canvas>
+<script>
+var canvas = document.getElementById('canvas'),
+    context = canvas.getContext('2d'),
+    centerX = canvas.width / 2,
+    centerY = canvas.height / 2,
+    radius = 70,
+    eyeRadius = 10,
+    eyeXOffset = 25,
+    eyeYOffset = 20,
+    eyeX1 = centerX - eyeXOffset,
+    eyeX2 = centerX + eyeXOffset,
+    eyeY = centerY - eyeXOffset;
+
+// draw the yellow circle
+context.beginPath();
+context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+context.fillStyle = 'yellow';
+context.fill();
+context.lineWidth = 5;
+context.strokeStyle = 'black';
+context.stroke();
+  
+// draw the eyes
+context.beginPath();
+context.arc(eyeX1, eyeY, eyeRadius, 0, 2 * Math.PI, false);
+context.arc(eyeX2, eyeY, eyeRadius, 0, 2 * Math.PI, false);
+context.fillStyle = 'black';
+context.fill();
+
+// draw the mouth
+context.beginPath();
+context.arc(centerX, centerY, 50, 0, Math.PI, false);
+context.stroke();
+</script>
+</body>
+</html>

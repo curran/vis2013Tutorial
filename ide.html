@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+  A simple "IDE" for showing editable example code.
+  Curran Kelleher 20/4/2013
+-->
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Example IDE</title>
+
+    <link rel="stylesheet" href="lib/codemirror-3.18/lib/codemirror.css">
+    <link rel="stylesheet" href="lib/codemirror-3.18/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="css/inlet.css">
+    <script src="lib/codemirror-3.18/lib/codemirror.js"></script>
+    <script src="lib/codemirror-3.18/addon/hint/show-hint.js"></script>
+    <script src="lib/codemirror-3.18/addon/hint/xml-hint.js"></script>
+    <script src="lib/codemirror-3.18/addon/hint/html-hint.js"></script>
+    <script src="lib/codemirror-3.18/mode/xml/xml.js"></script>
+    <script src="lib/codemirror-3.18/mode/javascript/javascript.js"></script>
+    <script src="lib/codemirror-3.18/mode/css/css.js"></script>
+    <script src="lib/codemirror-3.18/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="lib/inlet.js"></script>
+
+    <style>
+      #editor, #output {
+        position: fixed;
+        top: 0%;
+        width: 50%;
+        height: 100%;
+        border-style:solid;
+        border-width:1px;
+        box-sizing: border-box;
+        left: 0%;
+        font-size:14px;
+      }
+      #output {
+        left: 50%;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="editor"></div>
+    <iframe id="output"></iframe>
+    <script>
+      (function () {
+        var codeMirror = CodeMirror(editor, { mode: 'text/html' }),
+            prefix = 'data:text/html;charset=utf-8,',
+            out = document.getElementById('output');
+        codeMirror.setSize('100%', '100%');
+        codeMirror.on('change', function () {
+          var text = codeMirror.getValue();
+          out.setAttribute('src', prefix + encodeURIComponent(text));
+        });
+        codeMirror.setOption('value', decodeURIComponent(window.location.hash.substr(1)));
+        Inlet(codeMirror);
+      }());
+
+    </script>
+  </body>
+</html>
