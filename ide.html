@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <!--
   A simple "IDE" for showing editable example code.
-  Curran Kelleher 20/4/2013
+  The code re-runs every time the code is changed.
+  Inlet.js provides interactive sliders and color pickers.
+
+  Curran Kelleher 10/5/2013
 -->
 <html>
   <head>
@@ -11,6 +14,8 @@
     <link rel="stylesheet" href="lib/codemirror-3.18/lib/codemirror.css">
     <link rel="stylesheet" href="lib/codemirror-3.18/addon/hint/show-hint.css">
     <link rel="stylesheet" href="css/inlet.css">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/underscore-min.js"></script>
     <script src="lib/codemirror-3.18/lib/codemirror.js"></script>
     <script src="lib/codemirror-3.18/addon/hint/show-hint.js"></script>
     <script src="lib/codemirror-3.18/addon/hint/xml-hint.js"></script>
@@ -27,35 +32,74 @@
         top: 0%;
         width: 50%;
         height: 100%;
-        border-style:solid;
-        border-width:1px;
-        box-sizing: border-box;
         left: 0%;
         font-size:14px;
       }
-      #output {
-        left: 50%;
-        background: white;
-      }
+      #output { left: 50%; }
     </style>
   </head>
   <body>
+
+    <!-- The code editor -->
     <div id="editor"></div>
+
+    <!-- The running code -->
     <iframe id="output"></iframe>
+
     <script>
       (function () {
-        var codeMirror = CodeMirror(editor, { mode: 'text/html' }),
-            prefix = 'data:text/html;charset=utf-8,',
-            out = document.getElementById('output');
-        codeMirror.setSize('100%', '100%');
-        codeMirror.on('change', function () {
-          var text = codeMirror.getValue();
-          out.setAttribute('src', prefix + encodeURIComponent(text));
-        });
-        codeMirror.setOption('value', decodeURIComponent(window.location.hash.substr(1)));
-        Inlet(codeMirror);
-      }());
 
+        var codeMirror = CodeMirror(editor, { mode: 'text/html' }),
+            out = document.getElementById('output'),
+            exampleName = window.location.hash.substr(1);
+
+        // Creates a data URL which yields an HTML page with 
+        // the given source code in it when loaded.
+        function codeToDataURL(code) {
+          var prefix = 'data:text/html;charset=utf-8,';
+          return prefix + encodeURIComponent(code);
+        }
+
+        // Runs the code in the "output" iFrame.
+        function run(code) {
+          out.setAttribute('src', codeToDataURL(code))
+        }
+
+        // Saves the modified code back into the example source file.
+        // Executes at a rate not more than once every two seconds.
+        var save = _.debounce(function (code){
+
+          // Only save in development mode, not when viewing in GitHub Pages.
+          if(document.URL.match('localhost')) {
+
+            // See server.js for middleware that saves the file.
+            $.post('save/' + exampleName, {code: code});
+          }
+        }, 2000);
+            
+        // Inlet provides sliders and color pickers.
+        Inlet(codeMirror);
+
+        // Fill the space with the editor.
+        codeMirror.setSize('100%', '100%');
+
+        // Load the example HTML page into the editor,
+        // as specified by the text after the hash in the URL of this page.
+        $.get('examples/' + exampleName + '.html', function (code){
+
+          // Put the loaded code into the editor.
+          codeMirror.setOption('value', code);
+
+          run(code);
+
+          // When the code changes, run it and save it.
+          codeMirror.on('change', function () {
+            var code = codeMirror.getValue();
+            run(code);
+            save(code);
+          });
+        });
+      }());
     </script>
   </body>
 </html>

@@ -1,9 +1,9 @@
 [
   {
-    "name": "html5APIs",
-    "examples": [
-      "canvas_smiley"
-    ]
+    "name": "html5APIs"
+  },
+  {
+    "name": "canvas"
   },
   {
     "name": "topLibs"

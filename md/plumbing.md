@@ -5,3 +5,4 @@
  * [Require.js](http://requirejs.org/) - Dependency management for JavaScript modules 
  * [Ember.js](http://emberjs.com/) - Sophisticated infrastructure for complex apps
  * [Bootstrap](http://getbootstrap.com/) - Foundation for sleek cross-device user interfaces
+
