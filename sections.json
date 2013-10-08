@@ -1,20 +1,13 @@
 [
-  {
-    "name": "html5APIs"
-  },
-  {
-    "name": "canvas"
-  },
-  {
-    "name": "topLibs"
-  },
-  {
-    "name": "plumbing"
-  },
-  {
-    "name": "webDevEnvs"
-  },
-  {
-    "name": "challenges"
-  }
+  "html5APIs",
+  "canvas",
+  "canvasExample",
+  "topLibs",
+  "d3",
+  "d3Example",
+  "leaflet",
+  "leafletExample",
+  "plumbing",
+  "webDevEnvs",
+  "challenges"
 ]

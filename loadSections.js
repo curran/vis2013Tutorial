@@ -6,14 +6,6 @@
 (function () {
   var spacer = '<div class="spacer"></div>';
 
-//  function ide (html) {
-//    return [
-//      '<iframe class="ide" src="ide.html#',
-//      encodeURIComponent(html),
-//      '"></iframe>'
-//    ].join('');
-//  }
-
   function loadExample (name, callback) {
     $.get('examples/' + name + '.html', function (data) {
       callback(null, data);
@@ -21,15 +13,8 @@
   }
 
   function loadSection (section, callback) {
-    $.get('md/' + section.name + '.md', function (data) {
-      var html = spacer + marked(data);
-//      if (section.examples) {
-//        async.map(section.examples, loadExample, function (err, results) {
-//          callback(null, html + results.map(ide));
-//        });
-//      } else {
-      callback(null, html);
-//      }
+    $.get('md/' + section + '.md', function (data) {
+      callback(null, spacer + marked(data));
     });
   }
 
