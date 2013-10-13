@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<!--
+An example program that demonstrates how the HTML5 Geolocation API, Leaflet
+and OpenStreetMap can be used together.
+
+By Curran Kelleher 10/13/2013
+-->
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Mobile Map</title>
+
+    <link rel="stylesheet" href="lib/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/leaflet.js"></script>
+    
+    <!-- osm.js provides a high-level API for querying OpenStreetMap. -->
+    <script src="osm.js"> </script> 
+
+    <!-- main.js implements the Leaflet visualization. -->
+    <script src="main.js"> </script>
+
+  </head>
+  <body>
+    <!-- Leaflet will inject the map into this div. -->
+    <div id="map"></div>
+
+    <div id="statusContainer"><p id="status">Waiting for location ...</p></div>
+  </body>
+</html>

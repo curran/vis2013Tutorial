@@ -1,0 +1,24 @@
+/* Make the map and the status overlay fill the page. */
+#map, #statusContainer {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+/* Style the status text. */
+#statusContainer {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 5em;
+
+  /* This causes the semi-transparent white overlay. */
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* This class is applied to the status container once data is loaded,
+   causing it to disappear and show the map and markers below it. */
+.doneLoading {
+  display: none;
+}
