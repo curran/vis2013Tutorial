@@ -29,7 +29,7 @@
         float rho = 0.95;
 
         // Uncommenting these lines with make the earth a crazy morphing shape
-        /*
+        
         float waveOffset = time * 5.0;
         float frequency = sin(time) * 5.0 + 7.0;
         float s = sin(theta * frequency + waveOffset);
@@ -37,7 +37,7 @@
         float p = sin(time) / 2.0 + 0.5;
         float horizontalRidges = p*s / 10.0;
         rho = 0.8 + horizontalRidges + (1.0-p)*c/10.0;
-        */
+        
 
         // Project the grid onto a sphere.
         // from http://en.wikipedia.org/wiki/Spherical_coordinate_system
@@ -119,8 +119,6 @@ var indexFromIJ = function(i, j){
 // and 'normals' arrays.
 var pointsArray = [];
 var sphericalCoordsArray = [];
-
-window.onload = init;
 
 var program;
 
@@ -226,7 +224,7 @@ function resizeIfNeeded(){
   if(!((canvas.width === window.innerWidth) && 
        (canvas.height === window.innerHeight))){
     var size = Math.min(window.innerWidth, window.innerHeight);
-    canvas.width = canvas.height = size;
+    canvas.width = canvas.height = size - 5;
     gl.viewport( 0, 0, canvas.width, canvas.height );
   }
 }
@@ -323,15 +321,10 @@ function init() {
   setUpInteraction();
   
   gl = WebGLUtils.setupWebGL( canvas );
-  if (!gl ) { alert( "WebGL isn't available" ); }
   
-  gl.viewport( 0, 0, canvas.width, canvas.height );
-  gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
+  gl.clearColor(0, 0, 0, 0);
   
   gl.enable(gl.DEPTH_TEST);
-  gl.enable(gl.BLEND);
-  gl.blendFunc( gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA  );
-  gl.enable(gl.POLYGON_OFFSET_FILL);
   
   program = initShaders( gl, "vertex-shader", "fragment-shader" );
   gl.useProgram( program );
@@ -361,8 +354,6 @@ function init() {
   uniforms.time = gl.getUniformLocation(program, "time"); 
   uniforms.modelView = gl.getUniformLocation(program, "ModelView");
   
-  viewer_pos = point3.create([ 0.0, 0.0, -10.0] );
-  
   projection = mat4.ortho(-1, 1, -1, 1, -1, 1);
   
   gl.uniformMatrix4fv(
@@ -372,6 +363,7 @@ function init() {
   initTexture();
   setTextureImage("naturalEarth");
 }
+init();
     </script>
   </body>
 </html>
