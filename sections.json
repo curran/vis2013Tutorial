@@ -2,11 +2,13 @@
   "html5APIs",
   "canvas",
   "canvasExample",
+  "canvasCapabilities",
   "canvasBouncingBalls",
   "svg",
   "svgExample",
   "webGL",
   "webGLExample",
+  "procons",
   "topLibs",
   "d3",
   "d3Simplest",
@@ -17,5 +19,6 @@
   "leafletExample",
   "plumbing",
   "webDevEnvs",
+  "r7work",
   "challenges"
 ]

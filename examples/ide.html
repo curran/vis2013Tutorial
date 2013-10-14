@@ -100,10 +100,13 @@
         var save = _.debounce(function (code){
 
           // Only save in development mode, not when viewing in GitHub Pages.
+          // To turn on saving, add #save to the end of the URL.
           if(document.URL.match('localhost')) {
 
             // See server.js for middleware that saves the file.
-            $.post('save/' + exampleName, {code: code});
+
+            // Disable temporarily for use during the presentation
+            //$.post('save/' + exampleName, {code: code});
           }
         }, 2000);
             

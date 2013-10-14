@@ -30,31 +30,25 @@ $(document).ready(function(){
         minLat, minLng, maxLat, maxLng, bounds;
 
     map.setView([lat, lng], localeZoomLevel);
+    
+    $('#status').text('Querying OpenStreetMap ...');
 
     bounds = map.getBounds();
 
-    $('#status').text('Querying OpenStreetMap ...');
     minLat = bounds.getSouth();
     minLng = bounds.getWest();
     maxLat = bounds.getNorth()
     maxLng = bounds.getEast();
 
     osm.query(minLat, minLng, maxLat, maxLng, function (data) {
-      data.forEach(function (node) {
-        var circle = L.circleMarker([node.lat, node.lng], {
-          radius: 20,
-          color: 'red',
-          fillColor: '#05FC36',
-          fillOpacity: 0.5
-        });
-        circle.addTo(map);
-        circle.bindPopup(genPopupHTML(node));
+      data.forEach(function (d) {
+        var marker = new L.CircleMarker([d.lat, d.lng]);
+        marker.bindPopup(genPopupHTML(d));
+        marker.addTo(map);
       });
+
       $('#statusContainer').attr('class', 'doneLoading');
     });
-
-    console.log('Should query..');
-
   });
 
   // Here's how you can respond to map movements:

@@ -103,6 +103,11 @@ li:before {
   padding-bottom:5px;
 }
 
+.theEnd {
+  text-align:center;
+  font-size: 7em;
+}
+
 /* Custom scrollbar inspired by http://css-tricks.com/examples/WebKitScrollbars/ */
 ::-webkit-scrollbar {
     width: 8px;
