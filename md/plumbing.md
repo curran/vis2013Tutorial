@@ -4,5 +4,5 @@
  * [Backbone.js](http://backbonejs.org/) - for working with events and dynamic state
  * [Require.js](http://requirejs.org/) - Dependency management for JavaScript modules 
  * [Ember.js](http://emberjs.com/) - Sophisticated infrastructure for complex apps
+ * Async.js - Asynchronous control flow
  * [Bootstrap](http://getbootstrap.com/) - Foundation for sleek cross-device user interfaces
-

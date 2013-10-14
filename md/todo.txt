@@ -1,0 +1,8 @@
+Screenshot of UserInsight
+Review IGI for table
+Section on public data
+"Bake the cake" effect
+ - isolate examples
+   - Geolocation API
+   - OSM Query
+   - Leaflet example (ADD CIRCLE MARKER)

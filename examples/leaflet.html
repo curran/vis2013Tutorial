@@ -26,6 +26,21 @@
   
   // Add the OSM tile layer to the map.
   tileLayer.addTo(map);
+  
+  // Get the location of the user with the HTML5 Geolocation API.
+  // See http://www.w3schools.com/html/html5_geolocation.asp
+  navigator.geolocation.getCurrentPosition(function (position) {
+    var lat = position.coords.latitude,
+        lng = position.coords.longitude,
+        circle = L.circleMarker([lat, lng], {
+          radius: 20,
+          color: 'red',
+          fillColor: '#05FC36',
+          fillOpacity: 0.5
+        });
+    circle.addTo(map);
+    circle.bindPopup("You are here.").openPopup();
+  });
 }());
   </script>
 </body>

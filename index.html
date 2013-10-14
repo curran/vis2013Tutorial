@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <!--
   Material I presented at IEEE Vis 2013 in a tutorial called 
-  "Mobile and cloud Web-based graphics and visualization".
+  "Mobile and cloud Web-based graphics and visualization" with
+  Professor Haim Levkowitz on 10/14/2013.
 
   Curran Kelleher 10/3/2013
-  curran.kelleher@gmail.com
+  Last updated 10/13/2013
 -->
 <html>
   <head>
-    <script src="lib/jquery.js"></script>
-    <script src="lib/marked.js"></script>
-    <script src="lib/async.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
     <meta charset=utf-8 />
     <title>Visualization + Cloud + Mobile</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <script src="lib/jquery.js"></script>
+
+    <!-- Marked.js is a library for parsing markdown.
+         see https://github.com/chemzqm/marked -->
+    <script src="lib/marked.js"></script>
+
+    <!-- Async.js is a library for asynchronous control flow.
+         see https://github.com/caolan/async -->
+    <script src="lib/async.js"></script>
+
   </head>
   <body>
 
     <!--
       Background images extracted from the IEEE Vis 2013 PowerPoint template.
-      http://www.ieeevis.org/year/2013/info/presenter-information/authors
+      see http://www.ieeevis.org/year/2013/info/presenter-information/authors
     -->
 
-    <!-- The fixed position image behind the other sections -->
+    <!-- The fixed position image behind the other sections. -->
     <div id="slideBackground">
       <img src="css/slideBackground.png">
     </div>
 
-    <!-- The image behind the title section -->
+    <!-- The image behind the title section. -->
     <div id="firstSlideBackground">
       <img src="css/firstSlideBackground.png">
     </div>
 
-    <!-- "logo" is the small image fixed at the bottom -->
+    <!-- The small image fixed at the bottom. -->
     <img id="logo" src="css/logo.png">
 
     <div id="content">
 
       <!-- Title and subtitle for the first "slide" -->
       <p id="title">Mobile &amp; Cloud Web-based Visualization Technologies</p>
-      <p id="subtitle">By Curran Kelleher</p>
+      <p id="subtitle">
+        By <a href="https://github.com/curran/portfolio">Curran Kelleher</a>
+      </p>
 
       <!-- The other sections are injected into this div by loadSections.js -->
       <div id="sections"/>
 
+      <!-- Add a spacer at the end so you can scroll the content of the last
+           section into the vertical center of the page -->
+      <div class="spacer"/>
+
     </div>
 
-    <!-- Add a spacer at the end so you can scroll the content of the last
-         section into the vertical center of the page -->
-    <div class="spacer"/>
 
     <!-- Load the sections into the "sections" div. Placed at the end of body
          so no need to use document.ready -->
     <script src="loadSections.js"></script>
 
 
+    <!-- Add Disqus comments. -->
     <div id="disqus_thread"></div>
 
-    <!-- Disqus code copied verbatim from disqus.com/admin/universalcode/ */ -->
+    <!-- Disqus code copied verbatim from disqus.com/admin/universalcode/ -->
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'vis2013tutorial'; // required: replace example with your forum shortname

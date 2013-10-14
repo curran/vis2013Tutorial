@@ -65,7 +65,10 @@
     <script>
       (function () {
 
-        var codeMirror = CodeMirror(editor, { mode: 'text/html' }),
+        var codeMirror = CodeMirror(editor, {
+              mode: 'text/html',
+              lineNumbers: true
+            }),
             out = document.getElementById('output'),
             exampleName = window.location.hash.substr(1);
             
