@@ -17,6 +17,7 @@
     <script src="lib/jquery.js"></script>
     <script src="lib/underscore-min.js"></script>
 
+    <!-- CodeMirror is a library for syntax highlighted code editing. -->
     <link rel="stylesheet" href="lib/codemirror-3.18/lib/codemirror.css">
     <link rel="stylesheet" href="lib/codemirror-3.18/addon/hint/show-hint.css">
     <script src="lib/codemirror-3.18/lib/codemirror.js"></script>
@@ -28,7 +29,8 @@
     <script src="lib/codemirror-3.18/mode/css/css.js"></script>
     <script src="lib/codemirror-3.18/mode/htmlmixed/htmlmixed.js"></script>
 
-    <!-- Load Inlet, which provides sliders and color pickers for CodeMirror -->
+    <!-- Load Inlet, which provides sliders and color pickers for CodeMirror.
+         see https://github.com/enjalot/Inlet -->
     <script src="lib/inlet.js"></script>
     <link rel="stylesheet" href="lib/inlet.css">
 
@@ -43,6 +45,11 @@
         border: none;
       }
       #output { left: 50%; }
+      #runLink {
+        position: fixed;
+        top: 0%;
+        right: 52%;
+      }
     </style>
   </head>
   <body>
@@ -53,12 +60,16 @@
     <!-- The running code -->
     <iframe id="output" src="loading.html"></iframe>
 
+    <a id="runLink" target="blank">run</a>
+
     <script>
       (function () {
 
         var codeMirror = CodeMirror(editor, { mode: 'text/html' }),
             out = document.getElementById('output'),
             exampleName = window.location.hash.substr(1);
+            
+        runLink.setAttribute('href', exampleName + '.html');
 
         // Creates a data URL which yields an HTML page with 
         // the given source code in it when loaded.
@@ -69,6 +80,7 @@
 
         // Runs the code in the "output" iFrame.
         // Executes at a rate not more than once every 50ms.
+        // (throttle = executes every 50ms as you type)
         var run = _.throttle(function (code) {
 
           // The DataURL approach doesn't support relative URLs for libs
@@ -81,6 +93,7 @@
 
         // Saves the modified code back into the example source file.
         // Executes at a rate not more than once every two seconds.
+        // (debounce = executes 2 seconds after you stop typing)
         var save = _.debounce(function (code){
 
           // Only save in development mode, not when viewing in GitHub Pages.
